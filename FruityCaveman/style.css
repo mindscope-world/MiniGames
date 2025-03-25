@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    background-color: #e0f2e9; /* Light green background */
+    font-family: sans-serif;
+    margin: 0;
+    overflow: hidden; /* Prevent scrollbars if canvas is large */
+}
+
+h1 {
+    color: #5d4037; /* Brown */
+    margin-bottom: 10px;
+}
+
+.score-container {
+    font-size: 1.5em;
+    color: #3e2723; /* Darker brown */
+    margin-bottom: 10px;
+}
+
+#gameCanvas {
+    border: 3px solid #5d4037; /* Brown border */
+    background-color: #a1887f; /* Light brown cave floor */
+    display: block; /* Remove extra space below canvas */
+    margin: 0 auto; /* Center canvas */
+    /* Optional: Add a subtle cave background image */
+    /* background-image: url('cave_background.png'); */
+    /* background-size: cover; */
+}
+
+.instructions {
+    margin-top: 15px;
+    color: #5d4037;
+    font-style: italic;
+    text-align: center; /* Center align instructions */
+    line-height: 1.4;
+}
