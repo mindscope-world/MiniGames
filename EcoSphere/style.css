@@ -1,0 +1,376 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --bg-color: #1a1a2e; /* Dark space blue */
+    --card-bg: #162447; /* Slightly lighter blue */
+    --text-color: #e0e0e0; /* Light grey/white */
+    --header-color: #fca311; /* Accent orange/gold */
+    --primary-accent: #1f4068; /* Muted blue */
+    --secondary-accent: #4b8ac9; /* Brighter blue */
+    --success-color: #2ecc71; /* Green */
+    --warning-color: #f39c12; /* Orange */
+    --danger-color: #e74c3c; /* Red */
+    --disabled-color: #555;
+    --border-color: #3a506b;
+
+    --font-primary: 'Roboto', sans-serif;
+    --font-secondary: 'Orbitron', sans-serif; /* Sci-fi accent font */
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: var(--primary-accent);
+    color: var(--header-color);
+    padding: 10px 20px;
+    text-align: center;
+    border-bottom: 3px solid var(--header-color);
+}
+
+header h1 {
+    font-family: var(--font-secondary);
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+header p {
+    margin: 0;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px; /* Increased gap */
+    padding: 25px;
+    justify-content: center; /* Center cards if space allows */
+}
+
+.section.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px; /* More rounded corners */
+    padding: 20px;
+    flex: 1 1 350px; /* Flex grow, shrink, basis - allows wrapping */
+    min-width: 350px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between panels inside */
+}
+
+h2 {
+    font-family: var(--font-secondary);
+    color: var(--header-color);
+    margin: 0 0 15px 0; /* Adjusted margin */
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    font-size: 1.4em;
+    display: flex;
+    align-items: center;
+}
+h2 .icon {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+h3 {
+    color: var(--secondary-accent);
+    margin: 0 0 10px 0;
+    font-size: 1.1em;
+    font-weight: 700;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+h3 .icon {
+     margin-right: 8px;
+}
+
+.panel {
+    background-color: rgba(255, 255, 255, 0.03); /* Subtle inner panel background */
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.panel-group {
+    display: flex;
+    gap: 10px;
+}
+.panel-group .panel {
+    flex: 1;
+}
+
+
+/* --- Specific Panel Styling --- */
+
+.stats-panel p, .resources-panel p {
+    margin: 8px 0;
+    font-size: 1em; /* Slightly larger */
+    display: flex;
+    align-items: center;
+}
+.resources-panel .icon {
+    margin-right: 8px;
+    font-size: 1.1em;
+    width: 20px; /* Align icons */
+    text-align: center;
+}
+.value {
+    font-weight: 700;
+    color: #fff; /* Make values stand out */
+    margin-left: auto; /* Push value to the right */
+    padding-left: 10px;
+}
+
+/* Health/Warning Colors */
+.low-health { color: var(--warning-color) !important; font-weight: bold; }
+.critical-health { color: var(--danger-color) !important; font-weight: bold; }
+#health.low-health, #health.critical-health {
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+
+/* Actions Panel */
+.actions-panel button {
+    display: block; /* Stack buttons */
+    width: 100%; /* Full width */
+    margin: 10px 0;
+    padding: 12px 15px; /* Increased padding */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 700;
+    text-align: left; /* Align text left */
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: flex; /* Use flex for icon alignment */
+    align-items: center;
+}
+.actions-panel button .icon {
+    margin-right: 10px;
+    font-size: 1.1em;
+}
+
+.action-gather { background-color: #3498db; /* Blue */ }
+.action-gather:hover { background-color: #2980b9; }
+
+.action-develop { background-color: var(--success-color); /* Green */ }
+.action-develop:hover { background-color: #27ae60; }
+
+.action-research { background-color: #9b59b6; /* Purple */ }
+.action-research:hover { background-color: #8e44ad; }
+
+.actions-panel button:active {
+    transform: scale(0.98); /* Click feedback */
+}
+
+.actions-panel button:disabled {
+    background-color: var(--disabled-color);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+.efficiency-info {
+    font-size: 0.85em;
+    color: #aaa;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+
+/* Galaxy View Panels */
+.neighbors-panel #neighbors ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.neighbors-panel #neighbors li {
+    background-color: rgba(0, 0, 0, 0.1);
+    margin-bottom: 8px;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+.neighbors-panel #neighbors li:hover {
+     background-color: rgba(0, 0, 0, 0.2);
+}
+
+.neighbors-panel #neighbors button {
+    padding: 4px 8px;
+    font-size: 0.8em;
+    cursor: pointer;
+    background-color: var(--warning-color);
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    margin-left: 10px;
+    transition: background-color 0.2s ease;
+}
+.neighbors-panel #neighbors button:hover {
+    background-color: #d35400; /* Darker orange */
+}
+.neighbors-panel #neighbors button:disabled {
+    background-color: var(--disabled-color);
+    opacity: 0.7;
+}
+.neighbor-ejected {
+    opacity: 0.5;
+    text-decoration: line-through;
+    font-style: italic;
+}
+.neighbor-ejected button { display: none; } /* Hide steal/accuse for ejected */
+.revealed-corruptor {
+     color: var(--danger-color);
+     font-weight: bold;
+     margin-left: 5px;
+}
+
+
+.status-box {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    min-height: 60px; /* Ensure some height even when empty */
+}
+.status-box p { margin: 0 0 10px 0; }
+
+#galaxy-events.active-event,
+#policy-vote.active-policy {
+    background-color: rgba(252, 163, 17, 0.15); /* Use accent color lightly */
+    border-left: 4px solid var(--header-color);
+}
+
+.vote-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+.vote-button {
+    flex: 1;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+.vote-yes { background-color: var(--success-color); }
+.vote-yes:hover { background-color: #27ae60; }
+.vote-no { background-color: var(--danger-color); }
+.vote-no:hover { background-color: #c0392b; }
+.vote-button:disabled {
+     background-color: var(--disabled-color);
+     opacity: 0.7;
+}
+
+
+/* Log & Deduction Panels */
+.log-panel #log {
+    height: 200px; /* Increased height */
+    overflow-y: auto; /* Use auto for scrollbar */
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 0.85em;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    color: #ccc; /* Lighter text for log */
+}
+.log-panel #log p {
+    margin: 0 0 5px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+}
+.log-panel #log p:last-child {
+    border-bottom: none;
+}
+
+.deduction-panel .deduction-prompt {
+    font-size: 0.9em;
+    color: #bbb;
+    margin-bottom: 15px;
+}
+#accusation-buttons button {
+     padding: 8px 12px;
+     font-size: 0.9em;
+     cursor: pointer;
+     background-color: var(--danger-color);
+     color: #fff;
+     border: none;
+     border-radius: 4px;
+     margin-right: 5px;
+     margin-bottom: 5px; /* Allow wrapping */
+     transition: background-color 0.2s ease;
+}
+#accusation-buttons button:hover {
+     background-color: #c0392b; /* Darker red */
+}
+#accusation-buttons button:disabled {
+    background-color: var(--disabled-color);
+    opacity: 0.7;
+}
+#accusation-buttons p { /* Style for 'Corruptor identified' message */
+    font-style: italic;
+    color: var(--success-color);
+}
+
+/* Impact Panel */
+.impact-panel .value {
+    color: var(--success-color);
+    font-size: 1.1em;
+}
+.impact-info {
+    font-size: 0.8em;
+    opacity: 0.7;
+    margin-left: 5px;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: #aaa;
+    border-top: 1px solid var(--border-color);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 800px) {
+    .container {
+        padding: 15px;
+        gap: 15px;
+    }
+    .section.card {
+        flex-basis: 100%; /* Stack columns on smaller screens */
+        min-width: unset;
+    }
+    .panel-group {
+        flex-direction: column; /* Stack stats/resources panels */
+    }
+     header h1 { font-size: 1.5em; }
+}

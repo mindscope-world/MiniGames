@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSphere Prototype - Improved UI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>EcoSphere: Galactic Survival</h1>
+        <p>Guardian Prototype Interface</p>
+    </header>
+
+    <div class="container">
+        <!-- Player Planet Section -->
+        <div id="player-planet" class="section card">
+            <h2><span class="icon">🪐</span> Your Planet: <span id="planet-name">Genesis Prime</span></h2>
+
+            <div class="panel-group">
+                <div class="panel stats-panel">
+                    <h3>Vitals</h3>
+                    <p>💚 Health: <span id="health" class="value">100</span>%</p>
+                    <p>🌿 Biodiversity: <span id="biodiversity" class="value">10</span></p>
+                    <p>🛡️ Stability: <span id="stability" class="value">50</span>%</p>
+                </div>
+
+                <div class="panel resources-panel">
+                    <h3>Resources</h3>
+                    <p><span class="icon">⚡</span> Energy (E): <span id="energy" class="value">50</span></p>
+                    <p><span class="icon">💧</span> Water (W): <span id="water" class="value">50</span></p>
+                    <p><span class="icon">🧬</span> DNA (D): <span id="dna" class="value">10</span></p>
+                </div>
+            </div>
+
+             <div class="panel actions-panel">
+                <h3>Actions</h3>
+                 <p class="efficiency-info"><em>Research Bonus: <span id="efficiency">0</span>% Cost Reduction</em></p>
+                <button class="action-gather" onclick="gatherResource('energy')"><span class="icon">⚡</span> Gather Energy (+10 E, -1 H)</button>
+                <button class="action-gather" onclick="gatherResource('water')"><span class="icon">💧</span> Gather Water (+10 W, -1 H)</button>
+                <button class="action-gather" onclick="gatherResource('dna')"><span class="icon">🧬</span> Gather DNA (+5 D, -2 H)</button>
+                <button class="action-develop" onclick="develop('flora')">🌱 Develop Flora (-20 E, -10 W)</button>
+                <button class="action-develop" onclick="develop('fauna')">🐾 Develop Fauna (-15 E, -15 W, -5 D)</button>
+                <button class="action-research" onclick="research()">🔬 Research Tech (-30 E, -10 D)</button>
+            </div>
+        </div>
+
+        <!-- Galaxy View / Neighbors Section -->
+        <div id="galaxy-view" class="section card">
+            <h2><span class="icon">🌌</span> Galaxy View</h2>
+
+            <div class="panel neighbors-panel">
+                <h3>Neighbors (Simulated)</h3>
+                <div id="neighbors">
+                    <!-- Neighbor info will be populated by JS -->
+                </div>
+            </div>
+
+            <div class="panel events-panel">
+                <h3><span class="icon">🌠</span> Galactic Event</h3>
+                <div id="galaxy-events" class="status-box">
+                    <p id="event-status">None currently active.</p>
+                </div>
+            </div>
+
+             <div class="panel policy-panel">
+                 <h3><span class="icon">⚖️</span> Galactic Policy Vote</h3>
+                 <div id="policy-vote" class="status-box">
+                     <p id="policy-proposal">No active proposals.</p>
+                     <div class="vote-buttons">
+                        <button id="vote-yes" class="vote-button vote-yes" onclick="castVote(true)" disabled>Vote YES</button>
+                        <button id="vote-no" class="vote-button vote-no" onclick="castVote(false)" disabled>Vote NO</button>
+                     </div>
+                 </div>
+            </div>
+        </div>
+
+        <!-- Social Deduction / Log Section -->
+        <div id="social-log" class="section card">
+             <h2><span class="icon">📜</span> Log & Deduction</h2>
+
+            <div class="panel log-panel">
+                <h3>Activity Log</h3>
+                <div id="log">
+                    <p>Welcome, Guardian!</p>
+                    <!-- Game messages will appear here -->
+                </div>
+            </div>
+
+            <div class="panel deduction-panel">
+                 <h3><span class="icon">❓</span> Identify Corruptor</h3>
+                 <p class="deduction-prompt">Observe activity. Who seems suspicious?</p>
+                 <div id="accusation-buttons">
+                     <!-- Accusation buttons populated by JS -->
+                 </div>
+            </div>
+
+             <div class="panel impact-panel">
+                <h3><span class="icon">🌍</span> Real-World Impact</h3>
+                <p>Planted <span id="virtual-trees" class="value">0</span> virtual trees. <span class="impact-info">(Concept: Links to real donations)</span></p>
+             </div>
+        </div>
+    </div>
+
+    <footer>
+        EcoSphere Prototype v0.2
+    </footer>
+
+    <script src="game.js"></script>
+</body>
+</html>
